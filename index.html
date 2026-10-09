@@ -1,0 +1,491 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fresh Cuts is a fictional barbershop website demonstration.">
+  <title>Fresh Cuts | Your Style. Your Cut.</title>
+
+  <style>
+    /* BASIC SETTINGS */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      background: #111110;
+      color: #f5f0e6;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    :root {
+      --gold: #d6b36a;
+      --dark: #111110;
+      --card: #1c1c19;
+      --cream: #f5f0e6;
+      --muted: #b8b4aa;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* NAVIGATION */
+    header {
+      background: #111110;
+      border-bottom: 1px solid #333027;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--gold);
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--cream);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 510px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at center, #30291c 0%, #191815 48%, #111110 80%);
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 78px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      max-width: 560px;
+      margin: 0 auto 30px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--gold);
+      color: #17140d;
+      text-decoration: none;
+      padding: 13px 25px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .button:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--gold);
+      margin-left: 10px;
+    }
+
+    /* GENERAL SECTIONS */
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(30px, 5vw, 42px);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .gold-line {
+      width: 55px;
+      height: 3px;
+      background: var(--gold);
+      margin: 18px auto 0;
+    }
+
+    /* ABOUT */
+    .about {
+      background: #181815;
+    }
+
+    .about-content {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid #373329;
+      padding: 30px 22px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 28px;
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    /* OPENING HOURS */
+    .hours {
+      background: #181815;
+    }
+
+    .hours-list {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 13px 5px;
+      border-bottom: 1px solid #373329;
+    }
+
+    .hours-row span:last-child {
+      color: var(--gold);
+      text-align: right;
+    }
+
+    /* CONTACT */
+    .contact-content {
+      max-width: 620px;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .contact-content p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    .demo-note {
+      display: inline-block;
+      color: var(--gold);
+      border: 1px solid #55472b;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-top: 22px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #333027;
+      padding: 25px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: var(--gold);
+    }
+
+    /* MOBILE LAYOUT */
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        justify-content: center;
+        padding: 18px 0;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 12px 18px;
+      }
+
+      .hero {
+        min-height: 430px;
+        padding: 65px 0;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button-outline {
+        margin: 12px 0 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">FRESH CUTS.</a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#hours">Opening Hours</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container">
+        <p class="eyebrow">Style. Precision. Confidence.</p>
+
+        <h1>Your Style.<br><span>Your Cut.</span></h1>
+
+        <p>
+          A fresh look starts here. Explore our example services
+          and discover a cleaner, sharper style.
+        </p>
+
+        <a class="button" href="#services">Explore Services</a>
+        <a class="button button-outline" href="#contact">Contact Us</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="container about-content">
+        <div class="section-heading">
+          <p class="eyebrow">Welcome to Fresh Cuts</p>
+          <h2>A Cut Above the Rest</h2>
+          <div class="gold-line"></div>
+        </div>
+
+        <p>
+          Fresh Cuts is a fictional barbershop concept created
+          to demonstrate a modern website for a local business.
+        </p>
+
+        <p>
+          Our sample design combines a welcoming atmosphere,
+          a clean style and a simple way for visitors to explore
+          services and opening hours.
+        </p>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">What We Offer</p>
+          <h2>Our Services</h2>
+          <p>Example services and prices for this demo website.</p>
+          <div class="gold-line"></div>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card">
+            <h3>Classic Haircut</h3>
+            <p>A clean, timeless haircut tailored to your style.</p>
+            <div class="price">£15</div>
+          </article>
+
+          <article class="service-card">
+            <h3>Skin Fade</h3>
+            <p>A sharp fade with a clean, polished finish.</p>
+            <div class="price">£20</div>
+          </article>
+
+          <article class="service-card">
+            <h3>Beard Trim</h3>
+            <p>A tidy trim to keep your beard looking fresh.</p>
+            <div class="price">£10</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OPENING HOURS -->
+    <section class="hours" id="hours">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Plan Your Visit</p>
+          <h2>Opening Hours</h2>
+          <p>Example hours only — these are not real business hours.</p>
+          <div class="gold-line"></div>
+        </div>
+
+        <div class="hours-list">
+          <div class="hours-row">
+            <span>Monday – Friday</span>
+            <span>9:00 – 18:00</span>
+          </div>
+
+          <div class="hours-row">
+            <span>Saturday</span>
+            <span>9:00 – 16:00</span>
+          </div>
+
+          <div class="hours-row">
+            <span>Sunday</span>
+            <span>Closed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container contact-content">
+        <div class="section-heading">
+          <p class="eyebrow">Get in Touch</p>
+          <h2>Let's Talk Style</h2>
+          <div class="gold-line"></div>
+        </div>
+
+        <p>
+          This is a demonstration website. Replace this section
+          with the real business's approved contact details
+          if you build a website for a customer.
+        </p>
+
+        <a class="button" href="#home">Back to Top</a>
+
+        <div>
+          <span class="demo-note">
+            Portfolio demo — fictional business
+          </span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>
+        <strong>FRESH CUTS.</strong>
+        &copy; 2026. Fictional website demonstration.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
+```
